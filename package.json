@@ -1,0 +1,19 @@
+{
+  "name": "notely-api",
+  "version": "1.0.0",
+  "description": "A simple RESTful API for a note-taking application built with **TypeScript**, **Node.js**, **Express**, and **MongoDB**. Supports user authentication with **JWT**, full **CRUD operations** on notes, and **query filtering** by title and date.",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsc && node dist/index.js",
+    "clean": "rm -rf dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  }
+}
