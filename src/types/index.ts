@@ -2,17 +2,15 @@ import { Request } from 'express';
 import { Document } from 'mongoose';
 
 export interface IUser extends Document {
-  _id?: string;
+  username: string;
   email: string;
   password: string;
-  username: string;
   createdAt?: Date;
   updatedAt?: Date;
   comparePassword(candidatePassword: string): Promise<boolean>;
 }
 
 export interface INote extends Document {
-  _id?: string;
   title: string;
   content: string;
   userId: string;
