@@ -1,7 +1,10 @@
 import mongoose, { Document, Schema } from 'mongoose';
-import { INote } from '../types';
 
-export interface INoteDocument extends INote, Document {}
+export interface INoteDocument extends Document {
+  title: string;
+  content: string;
+  userId: string;
+}
 
 const noteSchema = new Schema<INoteDocument>(
   {

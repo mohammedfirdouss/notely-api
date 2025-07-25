@@ -5,17 +5,17 @@ import { successResponse, errorResponse, asyncHandler } from '../utils/response'
 import { RegisterData, LoginCredentials } from '../types';
 
 export const register = asyncHandler(async (req: Request, res: Response) => {
-  const { name, email, password }: RegisterData = req.body;
+  const { username, email, password }: RegisterData = req.body;
 
   // Check if user already exists
-  const existingUser = await User.findOne({ email });
+  const existingUser = await User.findOne({ $or: [{ email }, { username }] });
   if (existingUser) {
-    return errorResponse(res, 'User with this email already exists', 400);
+    return errorResponse(res, 'User with this email or username already exists', 400);
   }
 
   // Create new user
   const user = new User({
-    name,
+    username,
     email,
     password
   });
@@ -55,7 +55,7 @@ export const getProfile = asyncHandler(async (req: any, res: Response) => {
 
   return successResponse(res, {
     id: user._id,
-    name: user.name,
+    username: user.username,
     email: user.email,
     createdAt: user.createdAt,
     updatedAt: user.updatedAt
