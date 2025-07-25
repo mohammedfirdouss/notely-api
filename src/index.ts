@@ -25,10 +25,19 @@ app.get('/', (req, res) => {
   res.json({
     message: 'Welcome to Notely API',
     version: '1.0.0',
+    status: 'Server is running',
     endpoints: {
       auth: '/api/auth',
       notes: '/api/notes'
     }
+  });
+});
+
+app.get('/health', (req, res) => {
+  res.json({
+    status: 'OK',
+    timestamp: new Date().toISOString(),
+    environment: process.env.NODE_ENV
   });
 });
 
